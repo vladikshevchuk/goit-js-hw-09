@@ -37,10 +37,6 @@ const options = {
     btnStart.disabled = false;
 
     btnStart.addEventListener('click', () => {
-      // refs.days.textContent = day;
-      // refs.hours.textContent = hours;
-      // refs.minutes.textContent = minutes;
-      // refs.seconds.textContent = seconds;
 
       const timerId = setInterval(() => {
         const timer = selectedDates[0].getTime() - Date.now();
