@@ -2,6 +2,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const formRef = document.querySelector('.form');
 
+
 formRef.addEventListener('submit', getData);
 
 function getData(evt) {
@@ -9,9 +10,11 @@ function getData(evt) {
   const {
     elements: { delay, step, amount }
   } = evt.currentTarget;
+  // let promises = [];
+  for (let index = 0; index < amount.value; index++) {
+    let timeOut = +delay.value + (+step.value * index);
 
-  for (let i = 0; i < amount.value; i++) {
-    createPromise(i, delay.value)
+    createPromise(index+1, timeOut)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
@@ -20,7 +23,6 @@ function getData(evt) {
       })
   }
 }
-
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -35,5 +37,4 @@ function createPromise(position, delay) {
     }, delay)
   })
 }
-
 
